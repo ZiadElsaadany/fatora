@@ -2,35 +2,36 @@ import 'package:flutter/material.dart';
 
 class ItemsInfoCustomContainer extends StatelessWidget {
   final String txt1 ;
-  final String txt2 ;
   final TextStyle style ;
-  final bool check ;
-   const ItemsInfoCustomContainer({Key? key, required this.txt1, required this.txt2, required this.style,
-     required this.check
+  final String txt2 ;
+   const ItemsInfoCustomContainer({Key? key, required this.txt1, required this.style,required this.txt2
    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return     Column(
+    return    Row(
       children: [
-        Row(
-
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-          children: [
-
-            Text( txt1 , style: style,) ,
-
-            Text( txt2, style: style, ),
-
-          ],
-
+        Expanded(
+          flex:5,
+          child: Container(
+            padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black)
+              ),
+              child: Text( txt1 ,maxLines: 1,overflow: TextOverflow.ellipsis, style: style,textAlign: TextAlign.center,)),
         ),
-       if (check == true) const Divider(
-          color: Colors.black,
-          thickness: 1,
-        )
+        Expanded(
+          flex:3,
+
+          child: Container(
+
+              padding:  EdgeInsets.all( 10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black)
+              ),
+              child: Text( txt2 , style: style,maxLines: 1,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,)),
+        ),
       ],
-    );
+    ) ;
   }
 }
